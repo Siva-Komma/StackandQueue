@@ -30,15 +30,31 @@ namespace StackandQueue
             }
             Console.WriteLine("{0} node added to Queue", value);
         }
+        public void Dequeue()
+        {
+            if (this.Front == null)
+            {
+                Console.WriteLine("Queue is empty");
+                return;
+            }
+            Node temp = this.Front;
+            this.Front = this.Front.next;
+            if (this.Front == null)
+            {
+                this.Rear = null;
+            }
+            Console.WriteLine("{0} node removed from Queue", temp.data);
+        }
         public void Display()
         {
             Node temp = this.Rear;
-            if (temp == null)
+            if (temp != null)
             {
                 Console.WriteLine("Queue is Empty");
                 return;
             }
-            while (temp != null)
+            this.Rear = this.Rear.next;
+            while (this.Rear != null)
             {
                 Console.WriteLine("Queue Data : " + temp.data);
                 temp = temp.next;
